@@ -1,18 +1,16 @@
 resource "google_storage_bucket" "main" {
-  name     = "mahesh-demo-bucket-12345"
-  location = "ASIA-SOUTH1"
+  name     = var.bucket_name
+  location = var.location
 
-  storage_class = "STANDARD"
+  storage_class = var.storage_class
 
-  uniform_bucket_level_access = true
+  uniform_bucket_level_access = var.uniform_bucket_level_access
 
-  force_destroy = true
+  force_destroy = var.force_destroy
 
   versioning {
-    enabled = true
+    enabled = var.versioning_enabled
   }
 
-  labels = {
-    terraform = "true"
-  }
+  labels = var.labels
 }

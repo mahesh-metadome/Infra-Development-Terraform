@@ -6,18 +6,26 @@ variable "vpc_name" {
 
 
 variable "subnets" {
-  description = "Map of subnets to create. Key is the subnet short-name (e.g. 'mumbai')."
+  description = "Map of subnets to create"
+
   type = map(object({
     cidr                  = string
     region                = string
     private_google_access = optional(bool, true)
   }))
-}
 
+  default = {
+    mumbai = {
+      cidr                  = "10.0.1.0/16"
+      region                = "asia-south1"
+      
+    }
+  }
+}
 variable "region" {
   description = "Default region for resources"
   type        = string
-  default     = "us-central1"
+  default     = "asia-south1"
 }
 
 variable "project_id" {
